@@ -17,7 +17,7 @@ public class DataItemService {
         return Response.status(Response.Status.OK).entity(DataItem.findAll().list()).build();
     }
 
-    public static Response getItemById(@PathParam("id") Long id) {
+    public static Response getItemById(Long id) {
         DataItem dataItem = DataItem.findById(id);
         return Response.status(Response.Status.OK).entity(DataItem.findAll().list()).build();
     }
@@ -40,7 +40,7 @@ public class DataItemService {
     }
 
     @Transactional
-    public static Response put(@PathParam("id") Long id, Map<String, Object> request) {
+    public static Response put(Long id, Map<String, Object> request) {
         DataItem dataItem = DataItem.findById(id);
         if(dataItem == null){
             return Response.status(Response.Status.BAD_REQUEST).build();
@@ -60,7 +60,7 @@ public class DataItemService {
     }
 
     @Transactional
-    public static Response delete(@PathParam("id") Long id, Map<String, Object> request) {
+    public static Response delete(Long id, Map<String, Object> request) {
         DataItem dataItem = DataItem.findById(id);
         if(dataItem == null){
             return Response.status(Response.Status.BAD_REQUEST).build();
