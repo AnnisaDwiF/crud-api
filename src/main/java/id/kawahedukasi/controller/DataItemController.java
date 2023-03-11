@@ -2,6 +2,8 @@ package id.kawahedukasi.controller;
 
 import id.kawahedukasi.model.DataItem;
 import id.kawahedukasi.service.DataItemService;
+import id.kawahedukasi.service.ExportService;
+import net.sf.jasperreports.engine.JRException;
 
 import javax.inject.Inject;
 import javax.persistence.Entity;
@@ -20,9 +22,19 @@ public class DataItemController {
 
     @Inject
     DataItemService dataItemService;
+
+    @Inject
+    ExportService exportService;
+
     @GET
     public Response get() {
         return DataItemService.get();
+    }
+    @GET
+    @Path("/export")
+    @Produces("application/pdf")
+    public Response export() throws JRException {
+        return exportService.exportItem();
     }
 
     @GET
