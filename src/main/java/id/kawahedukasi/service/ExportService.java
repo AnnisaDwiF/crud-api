@@ -88,7 +88,7 @@ public class ExportService {
     }
 
     public Response exportCsvItem() throws IOException {
-        //get all data peserta
+        //get all data item
         List<DataItem> dataItemList = DataItem.listAll();
 
         File file = File.createTempFile("temp", "");
