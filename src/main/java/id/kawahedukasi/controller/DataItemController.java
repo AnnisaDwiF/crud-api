@@ -39,10 +39,22 @@ public class DataItemController {
         return DataItemService.get();
     }
     @GET
-    @Path("/export")
+    @Path("/export/pdf")
     @Produces("application/pdf")
     public Response export() throws JRException {
-        return exportService.exportItem();
+        return exportService.exportPdfItem();
+    }
+    @GET
+    @Path("/export/excel")
+    @Produces("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    public Response exportExcel() throws JRException, IOException {
+        return exportService.exportExcelItem();
+    }
+    @GET
+    @Path("/export/csv")
+    @Produces("text/csv")
+    public Response exportCSV() throws IOException {
+        return exportService.exportCsvItem();
     }
 
     @GET
